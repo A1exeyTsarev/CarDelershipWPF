@@ -1,0 +1,91 @@
+﻿<Window x:Class="CarDelershipWPF.StatusDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Изменение статуса" Height="350" Width="450"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        Background="#1a1a1a">
+
+    <Window.Resources>
+        <!-- Стиль для светлого ComboBox -->
+        <Style TargetType="ComboBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#FFC107"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Padding" Value="5,0"/>
+        </Style>
+
+        <!-- Стиль для элементов ComboBox -->
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Padding" Value="8,5"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FFC107"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#FFC107"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Стиль для кнопки -->
+        <Style TargetType="Button">
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <!-- Стиль для TextBlock -->
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FFC107"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+    </Window.Resources>
+
+    <Border Background="#2a2a2a" CornerRadius="10" Margin="15" BorderBrush="#404040" BorderThickness="1">
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Заголовок -->
+            <Border Grid.Row="0" Background="#FFC107" CornerRadius="5" Padding="10" Margin="0,0,0,20">
+                <TextBlock Text="Изменение статуса заказа" 
+                           Foreground="Black" FontWeight="Bold" FontSize="14" 
+                           HorizontalAlignment="Center"/>
+            </Border>
+
+            <!-- Текст -->
+            <TextBlock Grid.Row="1" Text="Выберите новый статус:" 
+                       Foreground="#FFC107" FontSize="13" Margin="0,0,0,15" 
+                       HorizontalAlignment="Center"/>
+
+            <!-- ComboBox со статусами -->
+            <ComboBox x:Name="cmbStatus" Grid.Row="2" Height="35" Margin="0,0,0,20"
+                      DisplayMemberPath="Name" SelectedValuePath="OrderStatus_Id"/>
+
+            <!-- Кнопки -->
+            <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+                <Button x:Name="btnOk" Content="Сохранить" Width="100" Height="35"
+                        Background="#FFC107" Foreground="Black" FontWeight="Bold"
+                        Click="btnOk_Click" Margin="0,0,15,0" Cursor="Hand"/>
+                <Button x:Name="btnCancel" Content="Отмена" Width="100" Height="35"
+                        Background="#333333" Foreground="#FFC107" FontWeight="Bold"
+                        Click="btnCancel_Click" Cursor="Hand"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

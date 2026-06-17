@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bc044239f14a43d2a4890cf411e0c73d" Name="Diagram1">
+        <EntityTypeShape EntityType="CarDealershipDBModel.C__EFMigrationsHistory" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.BodyTypes" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.CarComments" Width="1.5" PointX="9.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.CarImages" Width="1.5" PointX="9.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.Cars" Width="1.5" PointX="7.5" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.CarTags" Width="1.5" PointX="12.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.Colors" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.Countries" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.DeliveryMethods" Width="1.5" PointX="8.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.EngineTypes" Width="1.5" PointX="3" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.Feedbacks" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.Manufacturers" Width="1.5" PointX="3" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.Models" Width="1.5" PointX="5.25" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.OrderItems" Width="1.5" PointX="12.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.Orders" Width="1.5" PointX="10.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.OrderStatuses" Width="1.5" PointX="8.25" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.PaymentMethods" Width="1.5" PointX="2.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.PriceHistory" Width="1.5" PointX="9.75" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.Roles" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.ShoppingCarts" Width="1.5" PointX="12.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.StatusSupplies" Width="1.5" PointX="5.25" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.Suppliers" Width="1.5" PointX="5.25" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.Supplies" Width="1.5" PointX="7.5" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.SupplyItems" Width="1.5" PointX="9.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.Tags" Width="1.5" PointX="10.5" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.Transmissions" Width="1.5" PointX="3" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.Users" Width="1.5" PointX="7.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipDBModel.Wishlists" Width="1.5" PointX="9.75" PointY="8.375" IsExpanded="true" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_Models_BodyTypes_BodyType_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_CarComments_Cars_Car_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_CarComments_Users_Author_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_CarImages_Cars_Car_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_Cars_Colors_Color_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_Cars_Models_model_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_CarTags_Cars_Car_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_OrderItems_Cars_Car_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_PriceHistory_Cars" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_ShoppingCarts_Cars_Car_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_SupplyItems_Cars_Car_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_Wishlists_Cars_Car_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_CarTags_Tags_Tag_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_Manufacturers_Countries_Country_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_Orders_DeliveryMethods_DeliveryMethod_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_Models_EngineTypes_EngineType_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_Models_Manufacturers_Manufacturer_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_Models_Transmissions_Transmission_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_OrderItems_Orders_Order_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_Orders_OrderStatuses_OrderStatus_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_Orders_Users_User_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_Users_Roles_Role_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_ShoppingCarts_Users_User_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_Supplies_StatusSupplies_Status_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_Supplies_Suppliers_Supplier_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_SupplyItems_Supplies_Supply_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipDBModel.FK_Wishlists_Users_User_Id" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,200 @@
+﻿<Page x:Class="CarDelershipWPF.Pages.SuppliesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Управление поставками"
+      Background="#1a1a1a">
+
+    <Page.Resources>
+        <!-- Стиль для светлого ComboBox -->
+        <Style TargetType="ComboBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#FFC107"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Padding" Value="8,0"/>
+        </Style>
+
+        <!-- Стиль для элементов ComboBox -->
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Padding" Value="8,5"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FFC107"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#FFC107"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Стиль для DataGrid -->
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="#2a2a2a"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#404040"/>
+            <Setter Property="RowBackground" Value="#2a2a2a"/>
+            <Setter Property="AlternatingRowBackground" Value="#333333"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+        </Style>
+
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#FFC107"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderBrush" Value="#404040"/>
+            <Setter Property="BorderThickness" Value="0,0,1,1"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="DataGridCell">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#2a2a2a"/>
+            <Setter Property="BorderBrush" Value="#404040"/>
+            <Setter Property="BorderThickness" Value="0,0,1,1"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+
+        <Style TargetType="DataGridRow">
+            <Setter Property="Background" Value="#2a2a2a"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#404040"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Стиль для кнопки -->
+        <Style TargetType="Button">
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <!-- Стиль для текстовых меток -->
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Верхняя панель с кнопкой назад -->
+        <Grid Grid.Row="0" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Кнопка назад -->
+            <Button Grid.Column="0" Content="◀ Назад" 
+                    Background="#333333" Foreground="#FFC107"
+                    BorderBrush="#FFC107" BorderThickness="1"
+                    Height="35" Width="100" Click="btnBack_Click" Cursor="Hand"/>
+
+            <!-- Заголовок -->
+            <TextBlock Grid.Column="1" Text="Управление поставками" FontSize="24" FontWeight="Bold" 
+                       Foreground="#FFC107" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <!-- Пустой элемент для выравнивания -->
+            <TextBlock Grid.Column="2" Width="100" Visibility="Hidden"/>
+        </Grid>
+
+        <!-- Панель управления -->
+        <Border Grid.Row="1" Background="#2a2a2a" CornerRadius="10" Padding="10" Margin="0,0,0,10"
+                BorderBrush="#404040" BorderThickness="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <ComboBox x:Name="cmbStatus" Grid.Column="0" Width="200" Height="35"
+                          SelectionChanged="cmbStatus_SelectionChanged"/>
+
+                <Button x:Name="btnAdd" Grid.Column="1" Content="➕ Создать поставку" 
+                        Background="#FFC107" Foreground="Black" FontWeight="Bold"
+                        Width="140" Height="35" Click="btnAdd_Click" Margin="10,0,0,0" Cursor="Hand"/>
+
+                <Button x:Name="btnBack" Grid.Column="2" Content="◀ Назад" Width="100" Height="35"
+                        Background="#333" Foreground="#FFC107" FontWeight="Bold"
+                        Click="btnBack_Click" Margin="10,0,0,0" Cursor="Hand"/>
+            </Grid>
+        </Border>
+
+        <!-- Таблица поставок -->
+        <DataGrid x:Name="dgSupplies" Grid.Row="2" AutoGenerateColumns="False" 
+                  SelectionMode="Single" IsReadOnly="True"
+                  Background="#2a2a2a" Foreground="White"
+                  RowBackground="#2a2a2a" AlternatingRowBackground="#333333"
+                  BorderBrush="#404040" GridLinesVisibility="Horizontal">
+
+            <DataGrid.Columns>
+                <!-- ID -->
+                <DataGridTextColumn Header="ID" Binding="{Binding Supply_Id}" Width="50"/>
+
+                <!-- Поставщик -->
+                <DataGridTextColumn Header="Поставщик" Binding="{Binding SupplierName}" Width="200"/>
+
+                <!-- Дата создания -->
+                <DataGridTextColumn Header="Дата создания" Binding="{Binding CreatedDate}" Width="150"/>
+
+                <!-- Дата завершения -->
+                <DataGridTextColumn Header="Дата завершения" Binding="{Binding CompletedDate}" Width="150"/>
+
+                <!-- Статус -->
+                <DataGridTextColumn Header="Статус" Binding="{Binding StatusName}" Width="120">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding StatusName}" Value="Создано">
+                                    <Setter Property="Foreground" Value="#66B3FF"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding StatusName}" Value="В пути">
+                                    <Setter Property="Foreground" Value="#FFD966"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding StatusName}" Value="Завершено">
+                                    <Setter Property="Foreground" Value="#99FF99"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding StatusName}" Value="Отменено">
+                                    <Setter Property="Foreground" Value="#FF9999"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <!-- Действия -->
+                <DataGridTemplateColumn Header="Действия" Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="✏️" Width="35" Height="30" Click="btnEdit_Click" Tag="{Binding}" 
+                                    Background="#FFC107" Foreground="Black" Cursor="Hand"
+                                    ToolTip="Редактировать"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

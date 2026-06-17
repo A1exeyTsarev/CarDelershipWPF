@@ -1,0 +1,134 @@
+﻿<Page x:Class="CarDelershipWPF.Pages.CheckoutPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Оформление заказа"
+      Background="#1a1a1a"
+      Width="800"
+      Height="700">
+
+    <Page.Resources>
+        <!-- Стиль для TextBox -->
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#2a2a2a"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FFC107"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Padding" Value="10,0"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="#1a1a1a">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Верхняя панель -->
+        <Border Grid.Row="0" Background="#2a2a2a" Padding="15" BorderBrush="#FFC107" BorderThickness="0,0,0,1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Content="◀ Назад в корзину" 
+                        Background="#333333" Foreground="#FFC107"
+                        BorderBrush="#FFC107" BorderThickness="1"
+                        Height="35" Width="130" Click="BtnBack_Click"/>
+
+                <TextBlock Grid.Column="1" Text="📋 Оформление заказа" 
+                           FontSize="24" FontWeight="Bold" Foreground="#FFC107"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock x:Name="txtUserInfo" Foreground="#FFC107" Margin="0,0,10,0"/>
+                    <Button x:Name="btnLogout" Content="🚪 Выйти" 
+                            Background="#333333" Foreground="#FF6B6B"
+                            BorderBrush="#FF6B6B" BorderThickness="1"
+                            Height="35" Padding="15,0"
+                            Click="BtnLogout_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Форма заказа -->
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Margin="20">
+                <TextBlock Text="Данные получателя" FontSize="18" FontWeight="Bold" Foreground="#FFC107" Margin="0,0,0,15"/>
+
+                <TextBlock Text="ФИО" Foreground="White" Margin="0,0,0,5"/>
+                <TextBox x:Name="txtFullName"/>
+
+                <TextBlock Text="Телефон" Foreground="White" Margin="0,0,0,5"/>
+                <TextBox x:Name="txtPhone"/>
+
+                <TextBlock Text="Email" Foreground="White" Margin="0,0,0,5"/>
+                <TextBox x:Name="txtEmail"/>
+
+                <TextBlock Text="Адрес доставки" Foreground="White" Margin="0,0,0,5"/>
+                <TextBox x:Name="txtAddress"/>
+                <TextBlock x:Name="txtAddressError" Foreground="#FF6B6B" FontSize="11" 
+                           Visibility="Collapsed" Margin="0,-10,0,10"/>
+
+                <TextBlock Text="Способ доставки" Foreground="White" Margin="0,0,0,5"/>
+                <ComboBox x:Name="cmbDelivery" 
+                          Background="White" 
+                          Foreground="Black"
+                          BorderBrush="#FFC107"
+                          SelectionChanged="CmbDelivery_SelectionChanged">
+                    <ComboBoxItem Content="Самовывоз (0 ₽)" Foreground="Black"/>
+                    <ComboBoxItem Content="Доставка по городу (500 ₽)" Foreground="Black"/>
+                    <ComboBoxItem Content="Доставка по области (1500 ₽)" Foreground="Black"/>
+                    <ComboBoxItem Content="Доставка по России (5000 ₽)" Foreground="Black"/>
+                </ComboBox>
+
+                <TextBlock Text="Способ оплаты" Foreground="White" Margin="0,0,0,5"/>
+                <ComboBox x:Name="cmbPayment" 
+                          Background="White" 
+                          Foreground="Black"
+                          BorderBrush="#FFC107">
+                    <ComboBoxItem Content="Наличные" Foreground="Black"/>
+                    <ComboBoxItem Content="Банковская карта" Foreground="Black"/>
+                    <ComboBoxItem Content="Кредит" Foreground="Black"/>
+                    <ComboBoxItem Content="Рассрочка" Foreground="Black"/>
+                </ComboBox>
+
+                <!-- Итоговая информация -->
+                <Border Background="#2a2a2a" CornerRadius="10" Padding="15" Margin="0,20,0,0">
+                    <StackPanel>
+                        <TextBlock FontSize="14" Foreground="#888">
+                            <Run Text="Товаров: "/>
+                            <Run x:Name="txtTotalItems" Text="0"/>
+                        </TextBlock>
+                        <TextBlock FontSize="16" Foreground="#888">
+                            <Run Text="Сумма: "/>
+                            <Run x:Name="txtSubtotal" Text="0"/> ₽
+                        </TextBlock>
+                        <TextBlock FontSize="14" Foreground="#888">
+                            <Run Text="Доставка: "/>
+                            <Run x:Name="txtDeliveryPrice" Text="0"/> ₽
+                        </TextBlock>
+                        <TextBlock FontSize="24" FontWeight="Bold" Foreground="#28A745" Margin="0,10,0,0">
+                            <Run Text="Итого к оплате: "/>
+                            <Run x:Name="txtTotal" Text="0"/> ₽
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Кнопки -->
+        <Border Grid.Row="2" Background="#2a2a2a" Padding="15" Margin="0,10,0,0">
+            <StackPanel HorizontalAlignment="Center">
+                <Button x:Name="btnConfirm" Content="✅ Подтвердить заказ" 
+                        Background="#28A745" Foreground="White"
+                        Height="50" Width="250" FontWeight="Bold" FontSize="16"
+                        Click="BtnConfirm_Click"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>
